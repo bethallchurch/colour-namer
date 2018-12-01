@@ -12,6 +12,18 @@
   position: relative;
 }
 
+.github-link {
+  display: block;
+  width: 1rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.github-link img {
+  width: 100%;
+}
+
 .input {
   position: absolute;
   bottom: 25%;

@@ -1,8 +1,17 @@
 import { closestColor, processColor, rgbToStr, rgbToHex, isDark } from './helpers'
 import colors from './colors'
+import GitHubMark from './assets/github.png'
 import './App.css'
 
 const App = () => {
+  const githubLink = document.createElement('a')
+  const img = document.createElement('img')
+  img.src = GitHubMark
+  img.alt = 'Link to GitHub repository.'
+  githubLink.classList.add('github-link')
+  githubLink.href = 'https://github.com/bethallchurch/colour-namer'
+  githubLink.appendChild(img)
+
   const input = document.createElement('input')
 
   const outputEl = document.createElement('div')
@@ -49,6 +58,7 @@ const App = () => {
 
   const app = document.createElement('div')
   app.classList.add('app')
+  app.appendChild(githubLink)
   app.appendChild(input)
   app.appendChild(outputEl)
 
