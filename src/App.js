@@ -1,12 +1,12 @@
 import { closestColor, processColor, rgbToStr, rgbToHex, isDark } from './helpers'
 import colors from './colors'
-import GitHubMark from './assets/github.png'
+import GitHubMarkLight from './assets/github-light.png'
+import GitHubMarkDark from './assets/github-dark.png'
 import './App.css'
 
 const App = () => {
   const githubLink = document.createElement('a')
   const img = document.createElement('img')
-  img.src = GitHubMark
   img.alt = 'Link to GitHub repository.'
   githubLink.classList.add('github-link')
   githubLink.href = 'https://github.com/bethallchurch/colour-namer'
@@ -33,6 +33,7 @@ const App = () => {
   const reset = () => {
     document.body.style.backgroundImage = ''
     document.body.classList.remove('light-text')
+    img.src = GitHubMarkDark
     outputNameEl.innerHTML = ''
     outputHexEl.innerHTML = ''
     outputRgbEl.innerHTML = ''
@@ -41,7 +42,10 @@ const App = () => {
   const showResult = (inputColor, outputColor) => {
     const backgroundGradient = `linear-gradient(to bottom, ${inputColor.hex} 50%, ${outputColor.hex} 50%)`
     document.body.style.backgroundImage = backgroundGradient
-    isDark(inputColor.rgb) && document.body.classList.add('light-text')
+    if (isDark(inputColor.rgb)) {
+      img.src = GitHubMarkLight
+      document.body.classList.add('light-text')
+    }
     outputNameEl.innerHTML = outputColor.name
     outputHexEl.innerHTML = outputColor.hex
     outputRgbEl.innerHTML = rgbToStr(outputColor.rgb)
